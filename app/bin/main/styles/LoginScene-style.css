@@ -1,12 +1,12 @@
 .title-text {
-    -fx-font-size: 40px;
+    -fx-font-size: 33px;
     -fx-font-weight: bold;
-    -fx-fill: #333333;
+    -fx-fill: #ffffff;
 }
 
 .label {
     -fx-font-size: 14px;
-    -fx-text-fill: #19BFB7;
+    -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
 }
 
