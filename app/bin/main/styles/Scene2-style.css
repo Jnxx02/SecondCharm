@@ -1,0 +1,33 @@
+.vbox-menu {
+	-fx-background-color: "#222222";
+}
+
+.title-text-left {
+	-fx-fill: "#19BFB7";
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+}
+
+.title-text-right {
+	-fx-fill: "#FFFFFF";
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+}
+
+.label-menu {
+	-fx-text-fill: "#FFFFFF";
+	-fx-font-size: 15px;
+  
+}
+
+.menu-active {
+	-fx-background-color: "#79E0EE";
+}
+
+.hbox-home:hover {
+    -fx-background-color: #84a4ae;
+}
+
+.hbox-home:pressed {
+	-fx-background-color: #19BFB7;
+}

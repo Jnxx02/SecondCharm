@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -20,13 +21,15 @@ public class Scene1 {
     }
 
     public void show() {
-        //TODO
-        //Buatkan desain dan isi scenenya
         StackPane spLayout = new StackPane();
         Scene scene = new Scene(spLayout, 640, 480);
-        // scene.getStylesheets().add(getClass().getResource("/styles/home_style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/Scene1-style.css").toExternalForm());
 
         //Setting background
+        ImageView ivBackground = new ImageView("/images/bg.png");
+        ivBackground.setFitWidth(scene.getWidth());
+        ivBackground.setFitHeight(scene.getHeight());
+        spLayout.getChildren().add(ivBackground);
 
         //Text title
         Text tLeft = new Text("Second");
@@ -34,8 +37,6 @@ public class Scene1 {
         Text tRight = new Text("Charm");
         tRight.getStyleClass().add("title-text-right");
         TextFlow tfTitle = new TextFlow(tLeft, tRight);
-
-        //Top Logo
 
         //Text Desc
         Label lblDesc = new Label(
@@ -47,7 +48,7 @@ public class Scene1 {
         //Button Start
         Region space = new Region();
         space.setPrefHeight(12);
-        Button btnStart = new Button("Start");
+        Button btnStart = new Button("Start the Journey");
         btnStart.getStyleClass().add("btn-start");
 
         //Vbox Layout
@@ -59,10 +60,9 @@ public class Scene1 {
 
         //actions
         btnStart.setOnAction(v -> {
-            MainScene mainScene = new MainScene(stage);
-            mainScene.show();
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
         });
-
         stage.setScene(scene);
     }
 }

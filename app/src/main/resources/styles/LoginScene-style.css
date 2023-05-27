@@ -1,0 +1,54 @@
+.title-text {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-fill: #333333;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #19BFB7;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-prompt-text-fill: #999999;
+    -fx-max-width: 200px;
+    -fx-min-width: 100px;
+}
+
+.password-field {
+    -fx-prompt-text-fill: #999999;
+    -fx-max-width: 200px;
+    -fx-min-width: 100px;
+}
+
+.error-text {
+    -fx-font-size: 14px;
+    -fx-fill: red;
+    -fx-font-weight: bold;
+}
+
+.btn-login {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: "#323232";
+    -fx-background-color: #19BFB7;
+    -fx-padding: 8px 16px;
+    -fx-min-width: 171px;
+	-fx-min-height: 38px;
+}
+
+.btn-login:hover {
+    -fx-background-color: #555555;
+}
+
+.btn-login:pressed {
+    -fx-background-color: #222222;
+}
+
+.stack-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: #333333;
+    -fx-border-width: 2px;
+    -fx-padding: 16px;
+}
