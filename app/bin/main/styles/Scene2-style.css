@@ -1,3 +1,6 @@
+.vbox-layout {
+	-fx-background-color: "#19BFB7";
+}
 .vbox-menu {
 	-fx-background-color: "#222222";
 }
@@ -21,7 +24,7 @@
 }
 
 .menu-active {
-	-fx-background-color: "#79E0EE";
+	-fx-background-color: "#19BFB7";
 }
 
 .hbox-home:hover {

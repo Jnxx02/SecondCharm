@@ -49,6 +49,7 @@ public class Scene2 {
         vBoxLayout.setPrefSize(width, height);
         vBoxLayout.setMaxSize(width, height);
         vBoxLayout.setPadding(new Insets(24));
+        vBoxLayout.getStyleClass().add("vbox-layout");
         return vBoxLayout;
     }
 
@@ -71,10 +72,6 @@ public class Scene2 {
         vboxMenu.setMaxSize(width, height);
         vboxMenu.getStyleClass().add("vbox-menu");
 
-        // Item Title
-        // ImageView ivLogo = new ImageView("/images/logo.png");
-        // ivLogo.setFitWidth(32);
-        // ivLogo.setFitHeight(32);
         Text tLeft = new Text("Second");
         tLeft.getStyleClass().add("title-text-left");
         Text tRight = new Text("Charm");
@@ -111,12 +108,10 @@ public class Scene2 {
     }
 
     private HBox[] generateMenuItem() {
-        // String[] listImagePath = { "/images/icon_1.png", "/images/icon_2.png" };
-        String[] listTitle = { "Daftar Atasan", "Daftar Bawahan" };
+        String[] listTitle = { "Atasan", "Bawahan" };
         HBox[] listHboxMenu = new HBox[2];
 
         for (int i = 0; i < listHboxMenu.length; i++) {
-            // ImageView ivIcon = new ImageView(listImagePath[i]);
             Label labelMenu = new Label(listTitle[i]);
             labelMenu.getStyleClass().add("label-menu");
             listHboxMenu[i] = new HBox(labelMenu);
