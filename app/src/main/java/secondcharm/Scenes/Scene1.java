@@ -23,7 +23,7 @@ public class Scene1 {
 
     public void show() {
         StackPane spLayout = new StackPane();
-        Scene scene = new Scene(spLayout, 640, 480);
+        Scene scene = new Scene(spLayout, 600, 650);
         scene.getStylesheets().add(getClass().getResource("/styles/Scene1-style.css").toExternalForm());
 
         // Setting background
@@ -37,7 +37,7 @@ public class Scene1 {
                 "Dapatkan pakaian dengan kualitas pejabat dan harga merakyat hanya di toko kami! Temukan beragam pilihan atasan dan bawahan yang modis dan berkualitas.");
         lblDesc.getStyleClass().add("desc-text");
         lblDesc.setWrapText(true);
-        lblDesc.setMaxWidth(355);
+        lblDesc.setMaxWidth(350);
 
         // Button Start
         Region space = new Region();
@@ -60,4 +60,3 @@ public class Scene1 {
         stage.setScene(scene);
     }
 }
-

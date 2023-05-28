@@ -24,7 +24,7 @@ public class LoginScene {
 
     public void show() {
         StackPane spLayout = new StackPane();
-        Scene scene = new Scene(spLayout, 640, 480);
+        Scene scene = new Scene(spLayout, 600, 480);
         scene.getStylesheets().add(getClass().getResource("/styles/LoginScene-style.css").toExternalForm());
 
         VBox vLayout = new VBox();
@@ -32,7 +32,7 @@ public class LoginScene {
         vLayout.setPadding(new Insets(50));
         vLayout.setAlignment(Pos.CENTER);
 
-        //Setting background
+        // Setting background
         ImageView ivBackground = new ImageView("/images/login-bg-2.png");
         ivBackground.setFitWidth(scene.getWidth());
         ivBackground.setFitHeight(scene.getHeight());
@@ -63,7 +63,7 @@ public class LoginScene {
         btnLogin.setOnAction(event -> {
             String username = txtUsername.getText();
             String password = txtPassword.getText();
-            
+
             // Periksa kecocokan username dan password dari database
             if (checkCredentials(username, password)) {
                 // Jika login berhasil, arahkan ke scene selanjutnya
@@ -83,7 +83,8 @@ public class LoginScene {
 
     private boolean checkCredentials(String username, String password) {
         // TODO: Periksa kecocokan username dan password dengan data di database
-        // Misalnya, menggunakan kueri ke database atau membandingkan dengan data yang telah disimpan
+        // Misalnya, menggunakan kueri ke database atau membandingkan dengan data yang
+        // telah disimpan
         // Return true jika cocok, false jika tidak cocok
         // Berikut adalah contoh sederhana untuk keperluan demonstrasi:
         return username.equals("admin") && password.equals("admin123");

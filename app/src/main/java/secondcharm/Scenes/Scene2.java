@@ -108,7 +108,7 @@ public class Scene2 {
     }
 
     private HBox[] generateMenuItem() {
-        String[] listTitle = { "Atasan", "Bawahan" };
+        String[] listTitle = {"Atasan", "Bawahan" };
         HBox[] listHboxMenu = new HBox[2];
 
         for (int i = 0; i < listHboxMenu.length; i++) {
@@ -145,4 +145,3 @@ public class Scene2 {
         }
     }
 }
-

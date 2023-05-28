@@ -1,36 +1,36 @@
 .vbox-layout {
-	-fx-background-color: "#19BFB7";
+	-fx-background-color: #d6cbb8;
 }
 .vbox-menu {
-	-fx-background-color: "#222222";
+	-fx-background-color: #cea267;
 }
 
 .title-text-left {
-	-fx-fill: "#19BFB7";
+	-fx-fill: #cea267;
 	-fx-font-size: 20px;
 	-fx-font-weight: bold;
 }
 
 .title-text-right {
-	-fx-fill: "#FFFFFF";
+	-fx-fill: #FFFFFF;
 	-fx-font-size: 20px;
 	-fx-font-weight: bold;
 }
 
 .label-menu {
-	-fx-text-fill: "#FFFFFF";
+	-fx-text-fill: #FFFFFF;
 	-fx-font-size: 15px;
   
 }
 
 .menu-active {
-	-fx-background-color: "#19BFB7";
+	-fx-background-color: #555;
 }
 
 .hbox-home:hover {
-    -fx-background-color: #84a4ae;
+    -fx-background-color: #555;
 }
 
 .hbox-home:pressed {
-	-fx-background-color: #19BFB7;
+	-fx-background-color: #ffffff;
 }
