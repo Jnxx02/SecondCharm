@@ -32,7 +32,7 @@ public class Scene2 {
 
     public void show() {
         HBox root = new HBox();
-        Scene scene = new Scene(root, 640, 480);
+        Scene scene = new Scene(root, 600, 480);
 
         VBox leftSide = generateLeftSide(scene.getWidth() * .36, scene.getHeight());
         rightSide = generateRightSide(scene.getWidth() * .64, scene.getHeight());
