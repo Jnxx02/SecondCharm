@@ -6,10 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 public class Scene1 {
@@ -21,21 +23,21 @@ public class Scene1 {
 
     public void show() {
         StackPane spLayout = new StackPane();
-        Scene scene = new Scene(spLayout, 600, 650);
+        Scene scene = new Scene(spLayout, 600, 480);
         scene.getStylesheets().add(getClass().getResource("/styles/Scene1-style.css").toExternalForm());
 
         // Setting background
-        ImageView ivBackground = new ImageView("/images/bg.png");
+        ImageView ivBackground = new ImageView("/images/bg5.png");
         ivBackground.setFitWidth(scene.getWidth());
         ivBackground.setFitHeight(scene.getHeight());
         spLayout.getChildren().add(ivBackground);
 
         // Text Desc
         Label lblDesc = new Label(
-                "Dapatkan pakaian dengan kualitas pejabat dan harga merakyat hanya di toko kami! Temukan beragam pilihan atasan dan bawahan yang modis dan berkualitas.");
+                "Level Up Your Style Game with SecondCharm.");
         lblDesc.getStyleClass().add("desc-text");
         lblDesc.setWrapText(true);
-        lblDesc.setMaxWidth(350);
+        lblDesc.setMaxWidth(250);
 
         // Button Start
         Region space = new Region();
@@ -47,7 +49,7 @@ public class Scene1 {
         VBox vLayout = new VBox(lblDesc, btnStart);
         vLayout.setSpacing(8);
         spLayout.getChildren().add(vLayout);
-        vLayout.setPadding(new Insets(53));
+        vLayout.setPadding(new Insets(20));
         vLayout.setAlignment(Pos.BOTTOM_LEFT);
 
         // Actions

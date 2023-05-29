@@ -5,9 +5,11 @@ import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -32,7 +34,7 @@ public class Scene2 {
     public Scene2(Stage stage) {
         this.stage = stage;
 
-            // Observable List atasan
+        // Observable List atasan
         listAtasan = FXCollections.observableArrayList();
         topDao = new TopDao();
         try {
@@ -45,9 +47,9 @@ public class Scene2 {
         // listBawahan = FXCollections.observableArrayList();
         // bottomDao = new BottomDao();
         // try {
-        //     listBawahan.addAll(bottomDao.getAll());
+        // listBawahan.addAll(bottomDao.getAll());
         // } catch (SQLException e) {
-        //     e.printStackTrace();
+        // e.printStackTrace();
         // }
     }
 
@@ -67,74 +69,89 @@ public class Scene2 {
 
     private void showAtasan() {
         rightSide.getChildren().clear();
-
+    
         // Menampilkan daftar atasan
-        for (Top top : listAtasan) {
-            // Membuat konten untuk setiap atasan
-            VBox itemBox = new VBox();
-            itemBox.getStyleClass().add("item-box");
-    
-            // // Gambar atasan
-            // ImageView imageView = new ImageView(top.getImagePath());
-            // imageView.setFitWidth(200);
-            // imageView.setFitHeight(200);
-    
-            // Nama atasan
+        // for (Top top : listAtasan) {
+            Top top = new Top("Kemeja", 70000, 1, "XXL");
+            ImageView imageView = new ImageView("/images/top1.jpg");
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
             Label nameLabel = new Label(top.getName());
-            nameLabel.getStyleClass().add("item-name");
+            Label priceLabel = new Label("Price: " + top.getPrice());
     
-            // Harga atasan
-            Label priceLabel = new Label("Price: $" + top.getPrice());
-            priceLabel.getStyleClass().add("item-price");
+            VBox productBox = new VBox(imageView, nameLabel, priceLabel);
+            // productBox.setAlignment(Pos.TOP_RIGHT);
+            productBox.getStyleClass().add("product-box");
     
-            // Deskripsi atasan
-            // Label descriptionLabel = new Label("Description: " + top.getDescription());
-            // descriptionLabel.getStyleClass().add("item-description");
+            productBox.setOnMouseClicked(event -> {
+                // Tampilkan deskripsi produk
+                Label descriptionLabel = new Label("Description: ");
+                Label stockLabel = new Label("Stock: " + top.getStock());
+                Label sizeLabel = new Label("Size: "+ top.getSize());
+    
+                VBox descriptionBox = new VBox(descriptionLabel, stockLabel, sizeLabel);
+                descriptionBox.getStyleClass().add("description-box");
+    
+                // Opsi pembelian
+                // TextField addressField = new TextField();
+                Button buyButton = new Button("Buy");
+                VBox purchaseBox = new VBox(buyButton);
+                purchaseBox.getStyleClass().add("purchase-box");
 
-        // Tombol membeli atasan
-        Button buyButton = new Button("Buy");
-        buyButton.getStyleClass().add("buy-button");
-        buyButton.setOnAction(event -> {
-            MainScene mainScene = new MainScene(stage);
-            mainScene.show();
-
-            // Hapus atasan dari list jika stok habis
-            if (top.getStock() == 0) {
-                listAtasan.remove(top);
-            }
-        });
-
-        // Menambahkan semua komponen ke dalam itemBox
-        itemBox.getChildren().addAll(nameLabel, priceLabel, buyButton);
-
-        // Menambahkan itemBox ke dalam rightSide VBox
-        rightSide.getChildren().add(itemBox);
-    }
-    }
+                buyButton.setOnAction(e -> {
+                    int currentStock = top.getStock();
+                        if (currentStock - 1 == 0) {
+                            // Hapus produk dari daftar barang jika stok habis
+                            listAtasan.remove(top);
+                            // Hapus produk dari database
+                            // topDao.delete(top.getStock());
+                        }
+    
+                    // Pindah ke MainScene untuk transaksi
+                    MainScene mainScene = new MainScene(stage);
+                    mainScene.show();
+                });
+    
+                VBox productDetailsBox = new VBox(productBox, descriptionBox, purchaseBox);
+                productDetailsBox.getStyleClass().add("product-details-box");
+                rightSide.getChildren().add(productDetailsBox);
+            });
+    
+            rightSide.getChildren().add(productBox);
+        }
+    // }
+    
 
     private void showBawahan() {
         rightSide.getChildren().clear();
 
-         // TODO
+        // TODO
         /*
-        Menampilkan daftar atasan yang isinya berupa gambar, nama, dan harga yang bila di klik
-        akan menunjukkan deskripsi produknya seperti nama barang, harga, stock, dan size kemudian
-        akan ada opsi untuk membeli yang mengarah ke MainScene untuk transaksi dengan mengisi alamat
-        dan melakukan pembayaran.
-
-        Bila dibeli maka stock produk tersebut akan berkurang di database dan bila stock habis maka 
-        produk akan terhapus dari list barang (sekalian sinkronkan dengan database).
-        
-        Untuk databasenya itu buat bisa perbaiki di folder dao yang ada TopDao sama BottomDao. Sudah
-        ada mi templatenya yang dari modul tinggal disesuaikan dengan program.
-
-        Note:
-        Klu ada baris program yang perlu dihapus atau tidak diperlukan ji bisa dihapus saja dan jika
-        sudah ada perubahan silahkan di "git add ." kemudian git commit -m "feat: menambahkan fitur
-        menampilkan barang serta fitur pembelian barang" lalu "git push origin main". Sekian.
-        */
+         * Menampilkan daftar atasan yang isinya berupa gambar, nama, dan harga yang
+         * bila di klik
+         * akan menunjukkan deskripsi produknya seperti nama barang, harga, stock, dan
+         * size kemudian
+         * akan ada opsi untuk membeli yang mengarah ke MainScene untuk transaksi dengan
+         * mengisi alamat
+         * dan melakukan pembayaran.
+         * 
+         * Bila dibeli maka stock produk tersebut akan berkurang di database dan bila
+         * stock habis maka
+         * produk akan terhapus dari list barang (sekalian sinkronkan dengan database).
+         * 
+         * Untuk databasenya itu buat bisa perbaiki di folder dao yang ada TopDao sama
+         * BottomDao. Sudah
+         * ada mi templatenya yang dari modul tinggal disesuaikan dengan program.
+         * 
+         * Note:
+         * Klu ada baris program yang perlu dihapus atau tidak diperlukan ji bisa
+         * dihapus saja dan jika
+         * sudah ada perubahan silahkan di "git add ." kemudian git commit -m "feat:
+         * menambahkan fitur
+         * menampilkan barang serta fitur pembelian barang" lalu "git push origin main".
+         * Sekian.
+         */
     }
-
 
     private void changeMenu(int indexMenu) {
         switch (indexMenu) {

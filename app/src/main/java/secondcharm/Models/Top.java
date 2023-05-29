@@ -23,5 +23,5 @@ public class Top extends Clothing {
         System.out.println("Stock: " + getStock());
         System.out.println("Size: " + getSize());
     }
-     
+    
 }
