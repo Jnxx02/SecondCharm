@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -30,8 +31,8 @@ public class Scene2 {
 
     public Scene2(Stage stage) {
         this.stage = stage;
-        
-        // Observable List atasan
+
+            // Observable List atasan
         listAtasan = FXCollections.observableArrayList();
         topDao = new TopDao();
         try {
@@ -40,14 +41,14 @@ public class Scene2 {
             e.printStackTrace();
         }
 
-        // Observable List bawahan
-        listBawahan = FXCollections.observableArrayList();
-        bottomDao = new BottomDao();
-        try {
-            listBawahan.addAll(bottomDao.getAll());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        // // Observable List bawahan
+        // listBawahan = FXCollections.observableArrayList();
+        // bottomDao = new BottomDao();
+        // try {
+        //     listBawahan.addAll(bottomDao.getAll());
+        // } catch (SQLException e) {
+        //     e.printStackTrace();
+        // }
     }
 
     public void show() {
@@ -67,7 +68,54 @@ public class Scene2 {
     private void showAtasan() {
         rightSide.getChildren().clear();
 
-        // TODO
+        // Menampilkan daftar atasan
+        for (Top top : listAtasan) {
+            // Membuat konten untuk setiap atasan
+            VBox itemBox = new VBox();
+            itemBox.getStyleClass().add("item-box");
+    
+            // // Gambar atasan
+            // ImageView imageView = new ImageView(top.getImagePath());
+            // imageView.setFitWidth(200);
+            // imageView.setFitHeight(200);
+    
+            // Nama atasan
+            Label nameLabel = new Label(top.getName());
+            nameLabel.getStyleClass().add("item-name");
+    
+            // Harga atasan
+            Label priceLabel = new Label("Price: $" + top.getPrice());
+            priceLabel.getStyleClass().add("item-price");
+    
+            // Deskripsi atasan
+            // Label descriptionLabel = new Label("Description: " + top.getDescription());
+            // descriptionLabel.getStyleClass().add("item-description");
+
+        // Tombol membeli atasan
+        Button buyButton = new Button("Buy");
+        buyButton.getStyleClass().add("buy-button");
+        buyButton.setOnAction(event -> {
+            MainScene mainScene = new MainScene(stage);
+            mainScene.show();
+
+            // Hapus atasan dari list jika stok habis
+            if (top.getStock() == 0) {
+                listAtasan.remove(top);
+            }
+        });
+
+        // Menambahkan semua komponen ke dalam itemBox
+        itemBox.getChildren().addAll(nameLabel, priceLabel, buyButton);
+
+        // Menambahkan itemBox ke dalam rightSide VBox
+        rightSide.getChildren().add(itemBox);
+    }
+    }
+
+    private void showBawahan() {
+        rightSide.getChildren().clear();
+
+         // TODO
         /*
         Menampilkan daftar atasan yang isinya berupa gambar, nama, dan harga yang bila di klik
         akan menunjukkan deskripsi produknya seperti nama barang, harga, stock, dan size kemudian
@@ -85,13 +133,6 @@ public class Scene2 {
         sudah ada perubahan silahkan di "git add ." kemudian git commit -m "feat: menambahkan fitur
         menampilkan barang serta fitur pembelian barang" lalu "git push origin main". Sekian.
         */
-    }
-
-    private void showBawahan() {
-        rightSide.getChildren().clear();
-
-        //TODO
-        /* Lakukan hal yang sama seperti atasan */
     }
 
 

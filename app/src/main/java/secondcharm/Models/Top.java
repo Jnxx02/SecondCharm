@@ -18,8 +18,10 @@ public class Top extends Clothing {
 
     @Override
     void displayInfo() {
-        //TODO
-        //implement method abstract dari Clothing
-
-    }   
+        System.out.println("Name: " + getName());
+        System.out.println("Price: " + getPrice());
+        System.out.println("Stock: " + getStock());
+        System.out.println("Size: " + getSize());
+    }
+     
 }

@@ -11,7 +11,8 @@ public class DataBaseConfig {
         try {
             if (conn == null || conn.isClosed()) {
                 Class.forName("org.sqlite.JDBC");
-                conn = DriverManager.getConnection("jdbc:sqlite:clothes.db");
+                conn = DriverManager.getConnection("jdbc:sqlite:tops.db");
+                conn = DriverManager.getConnection("jdbc:sqlite:bottoms.db");
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
