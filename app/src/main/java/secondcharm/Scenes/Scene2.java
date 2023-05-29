@@ -17,17 +17,37 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import secondcharm.Models.Bottom;
 import secondcharm.Models.Top;
+import secondcharm.dao.BottomDao;
+import secondcharm.dao.TopDao;
 
 public class Scene2 {
     private Stage stage;
     private VBox rightSide;
     private ObservableList<Top> listAtasan;
     private ObservableList<Bottom> listBawahan;
-    // private ObatDao obatDao;
+    private TopDao topDao;
+    private BottomDao bottomDao;
 
     public Scene2(Stage stage) {
         this.stage = stage;
+        
+        // Observable List atasan
         listAtasan = FXCollections.observableArrayList();
+        topDao = new TopDao();
+        try {
+            listAtasan.addAll(topDao.getAll());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Observable List bawahan
+        listBawahan = FXCollections.observableArrayList();
+        bottomDao = new BottomDao();
+        try {
+            listBawahan.addAll(bottomDao.getAll());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void show() {
@@ -44,6 +64,37 @@ public class Scene2 {
         stage.setScene(scene);
     }
 
+    private void showAtasan() {
+        rightSide.getChildren().clear();
+
+        // Menampilkan daftar atasan
+        for (Top top : listAtasan) {
+            HBox itemBox = new HBox();
+            itemBox.getStyleClass().add("item-box");
+
+            ImageView imageView = new ImageView("/images/brand-logo.png");
+            Label nameLabel = new Label("Second");
+            Label priceLabel = new Label("Harga: " + top.getPrice());
+
+            itemBox.getChildren().addAll(imageView, nameLabel, priceLabel);
+            rightSide.getChildren().add(itemBox);
+
+            // Menambahkan event handler untuk klik pada item
+            itemBox.setOnMouseClicked(event -> {
+                MainScene mainscene = new MainScene(stage);
+                mainscene.show();
+            });
+        }
+
+        // TODO
+        //Buatkan kode untuk menjalankan program pembelian dengan ketentuan
+        //bila barang yang dipilih ingin dibeli maka akan berpindah ke mainscene untuk
+        //user mengisi alamat dan metode pembayaran kemudian bila selesai maka
+        //stock barang akan berkurang sesuai dengan jumlah pembelian user dan apabila
+        //ada barang yang stoknya sudah habis maka barang tersebut akan otomatis
+        //terhapus dari list barang
+    }
+
     private VBox generateRightSide(double width, double height) {
         VBox vBoxLayout = new VBox();
         vBoxLayout.setPrefSize(width, height);
@@ -56,7 +107,7 @@ public class Scene2 {
     private void changeMenu(int indexMenu) {
         switch (indexMenu) {
             case 1:
-                // showListView();
+                showAtasan();
                 break;
             case 2:
                 // showTableView();

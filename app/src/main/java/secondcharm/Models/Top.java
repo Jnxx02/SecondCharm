@@ -2,17 +2,17 @@ package secondcharm.Models;
 
 public class Top extends Clothing {
     private String size;
-
+    
     public String getSize() {
         return size;
     }
-
+    
     public void setSize(String size) {
         this.size = size;
     }
-
-    public Top(String id, String name, double price, String size) {
-        super(id, name, price);
+    
+    public Top(String name, double price, int stock, String size) {
+        super(name, price, stock);
         this.size = size;
     }
 
