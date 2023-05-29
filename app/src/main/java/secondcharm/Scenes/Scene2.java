@@ -84,37 +84,8 @@ public class Scene2 {
             productBox.getStyleClass().add("product-box");
     
             productBox.setOnMouseClicked(event -> {
-                // Tampilkan deskripsi produk
-                Label descriptionLabel = new Label("Description: ");
-                Label stockLabel = new Label("Stock: " + top.getStock());
-                Label sizeLabel = new Label("Size: "+ top.getSize());
-    
-                VBox descriptionBox = new VBox(descriptionLabel, stockLabel, sizeLabel);
-                descriptionBox.getStyleClass().add("description-box");
-    
-                // Opsi pembelian
-                // TextField addressField = new TextField();
-                Button buyButton = new Button("Buy");
-                VBox purchaseBox = new VBox(buyButton);
-                purchaseBox.getStyleClass().add("purchase-box");
-
-                buyButton.setOnAction(e -> {
-                    int currentStock = top.getStock();
-                        if (currentStock - 1 == 0) {
-                            // Hapus produk dari daftar barang jika stok habis
-                            listAtasan.remove(top);
-                            // Hapus produk dari database
-                            // topDao.delete(top.getStock());
-                        }
-    
-                    // Pindah ke MainScene untuk transaksi
-                    MainScene mainScene = new MainScene(stage);
-                    mainScene.show();
-                });
-    
-                VBox productDetailsBox = new VBox(productBox, descriptionBox, purchaseBox);
-                productDetailsBox.getStyleClass().add("product-details-box");
-                rightSide.getChildren().add(productDetailsBox);
+                MainScene mainScene = new MainScene(stage);
+                mainScene.show();
             });
     
             rightSide.getChildren().add(productBox);
