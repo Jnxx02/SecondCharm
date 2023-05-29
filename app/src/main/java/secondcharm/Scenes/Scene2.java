@@ -67,32 +67,38 @@ public class Scene2 {
     private void showAtasan() {
         rightSide.getChildren().clear();
 
-        // Menampilkan daftar atasan
-        for (Top top : listAtasan) {
-            HBox itemBox = new HBox();
-            itemBox.getStyleClass().add("item-box");
-
-            ImageView imageView = new ImageView("/images/brand-logo.png");
-            Label nameLabel = new Label("Second");
-            Label priceLabel = new Label("Harga: " + top.getPrice());
-
-            itemBox.getChildren().addAll(imageView, nameLabel, priceLabel);
-            rightSide.getChildren().add(itemBox);
-
-            // Menambahkan event handler untuk klik pada item
-            itemBox.setOnMouseClicked(event -> {
-                MainScene mainscene = new MainScene(stage);
-                mainscene.show();
-            });
-        }
-
         // TODO
-        //Buatkan kode untuk menjalankan program pembelian dengan ketentuan
-        //bila barang yang dipilih ingin dibeli maka akan berpindah ke mainscene untuk
-        //user mengisi alamat dan metode pembayaran kemudian bila selesai maka
-        //stock barang akan berkurang sesuai dengan jumlah pembelian user dan apabila
-        //ada barang yang stoknya sudah habis maka barang tersebut akan otomatis
-        //terhapus dari list barang
+        /*
+        Menampilkan daftar atasan yang isinya berupa gambar, nama, dan harga yang bila di klik
+        akan menunjukkan deskripsi produknya seperti nama barang, harga, stock, dan size kemudian
+        akan ada opsi untuk membeli yang mengarah ke MainScene untuk transaksi dengan mengisi alamat
+        dan melakukan pembayaran.
+
+        Bila dibeli maka stock produk tersebut akan berkurang di database dan bila stock habis maka 
+        produk akan terhapus dari list barang (sekalian sinkronkan dengan database).
+        
+        Untuk databasenya itu buat bisa perbaiki di folder dao yang ada TopDao sama BottomDao. Sudah
+        ada mi templatenya yang dari modul tinggal disesuaikan dengan program
+        */
+    }
+
+    private void showBawahan() {
+        rightSide.getChildren().clear();
+
+        //TODO
+        /* Lakukan hal yang sama seperti atasan */
+    }
+
+    private void changeMenu(int indexMenu) {
+        switch (indexMenu) {
+            case 1:
+                showAtasan();
+                break;
+            case 2:
+                showBawahan();
+            default:
+                break;
+        }
     }
 
     private VBox generateRightSide(double width, double height) {
@@ -102,18 +108,6 @@ public class Scene2 {
         vBoxLayout.setPadding(new Insets(24));
         vBoxLayout.getStyleClass().add("vbox-layout");
         return vBoxLayout;
-    }
-
-    private void changeMenu(int indexMenu) {
-        switch (indexMenu) {
-            case 1:
-                showAtasan();
-                break;
-            case 2:
-                // showTableView();
-            default:
-                break;
-        }
     }
 
     private VBox generateLeftSide(double width, double height) {
