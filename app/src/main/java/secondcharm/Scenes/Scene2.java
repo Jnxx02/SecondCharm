@@ -78,7 +78,12 @@ public class Scene2 {
         produk akan terhapus dari list barang (sekalian sinkronkan dengan database).
         
         Untuk databasenya itu buat bisa perbaiki di folder dao yang ada TopDao sama BottomDao. Sudah
-        ada mi templatenya yang dari modul tinggal disesuaikan dengan program
+        ada mi templatenya yang dari modul tinggal disesuaikan dengan program.
+
+        Note:
+        Klu ada baris program yang perlu dihapus atau tidak diperlukan ji bisa dihapus saja dan jika
+        sudah ada perubahan silahkan di "git add ." kemudian git commit -m "feat: menambahkan fitur
+        menampilkan barang serta fitur pembelian barang" lalu "git push origin main". Sekian.
         */
     }
 
@@ -88,6 +93,7 @@ public class Scene2 {
         //TODO
         /* Lakukan hal yang sama seperti atasan */
     }
+
 
     private void changeMenu(int indexMenu) {
         switch (indexMenu) {
@@ -134,7 +140,7 @@ public class Scene2 {
 
         // Button
         ImageView ivIcon = new ImageView("/images/icon_home.png");
-        Label labelMenu = new Label("Back to Home");
+        Label labelMenu = new Label("Log Out");
         labelMenu.getStyleClass().add("label-menu");
         HBox hboxHome = new HBox(ivIcon, labelMenu);
         hboxHome.setPadding(new Insets(12, 20, 24, 20));
@@ -153,7 +159,7 @@ public class Scene2 {
     }
 
     private HBox[] generateMenuItem() {
-        String[] listTitle = {"Atasan", "Bawahan" };
+        String[] listTitle = {"Atasan", "Bawahan"};
         HBox[] listHboxMenu = new HBox[2];
 
         for (int i = 0; i < listHboxMenu.length; i++) {

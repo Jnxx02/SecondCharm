@@ -15,10 +15,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import secondcharm.Utils.UserConfig;
 
-public class LoginScene {
+public class SignUpScene {
     private Stage stage;
 
-    public LoginScene(Stage stage) {
+    public SignUpScene(Stage stage) {
         this.stage = stage;
     }
 
@@ -39,7 +39,7 @@ public class LoginScene {
         spLayout.getChildren().add(ivBackground);
 
         // Title
-        Text title = new Text("Login");
+        Text title = new Text("Sign Up");
         title.getStyleClass().add("title-text");
 
         // Username Field
@@ -57,32 +57,35 @@ public class LoginScene {
         errorMessage.getStyleClass().add("error-text");
         errorMessage.setTextAlignment(TextAlignment.CENTER);
 
-        // Login Button
-        Button btnLogin = new Button("Login");
-        btnLogin.getStyleClass().add("btn-login");
-        btnLogin.setOnAction(event -> {
+        // Sign Up
+        Button btnSignUp = new Button("Sign Up");
+        btnSignUp.getStyleClass().add("btn-login");
+        btnSignUp.setOnAction(event -> {
             String username = txtUsername.getText();
             String password = txtPassword.getText();
-
-            // Periksa kecocokan username dan password dari database
-            if (UserConfig.validasiLogin(username, password)) {
-                // Jika login berhasil, arahkan ke scene selanjutnya
+        
+            // Periksa kecocokan username dan password dari database apakah ada username yang duplikat atau tidak
+            if (UserConfig.isUsernameAvailable(username)) {
+                // Username tersedia, lanjutkan proses pendaftaran
+                UserConfig.registerUser(username, password);
                 Scene2 scene2 = new Scene2(stage);
                 scene2.show();
             } else {
-                // Jika login gagal, tampilkan pesan kesalahan
-                errorMessage.setText("Invalid username or password. Please try again.");
+                // Username sudah digunakan, tampilkan pesan kesalahan
+                errorMessage.setText("Username is already exists");
             }
         });
+        
 
-        // Opsi Sign Up
-        Label labelSignUp = new Label("Belum punya akun? Sign Up");
-        labelSignUp.setOnMouseClicked(v -> {
-            SignUpScene signUpScene = new SignUpScene(stage);
-            signUpScene.show();
+         // Opsi Login
+        Label labelLogin = new Label("Sudah punya akun? Login");
+        labelLogin.setOnMouseClicked(v -> {
+            LoginScene loginScene = new LoginScene(stage);
+            loginScene.show();
         });
 
-        vLayout.getChildren().addAll(title, lblUsername, txtUsername, lblPassword, txtPassword, errorMessage, btnLogin, labelSignUp);
+
+        vLayout.getChildren().addAll(title, lblUsername, txtUsername, lblPassword, txtPassword, errorMessage, btnSignUp, labelLogin);
         spLayout.getChildren().add(vLayout);
 
         stage.setScene(scene);

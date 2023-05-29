@@ -35,7 +35,5 @@ public abstract class Clothing {
         this.stock = stock;
     }
 
-    //TODO
-    //tambahkan method abstractnya seperti contoh dibawah (tidak harus sama kyk di bwah)
-    //public abstract void displayInfo();
+    abstract void displayInfo();
 }

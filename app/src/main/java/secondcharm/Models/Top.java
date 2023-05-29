@@ -16,7 +16,10 @@ public class Top extends Clothing {
         this.size = size;
     }
 
-    //TODO
-    //implement method abstract dari Clothing
-    
+    @Override
+    void displayInfo() {
+        //TODO
+        //implement method abstract dari Clothing
+
+    }   
 }
