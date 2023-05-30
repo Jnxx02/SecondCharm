@@ -1,27 +1,23 @@
 package secondcharm.Models;
 
 public class Top extends Clothing {
+
     private String size;
-    
-    public String getSize() {
-        return size;
-    }
-    
-    public void setSize(String size) {
-        this.size = size;
-    }
-    
-    public Top(String name, double price, int stock, String size) {
-        super(name, price, stock);
+
+    public Top(byte[] image, String name, double price, String size) {
+        super(image, name, price);
         this.size = size;
     }
 
-    @Override
-    void displayInfo() {
-        System.out.println("Name: " + getName());
-        System.out.println("Price: " + getPrice());
-        System.out.println("Stock: " + getStock());
-        System.out.println("Size: " + getSize());
+    // public Top() {
+    //     super("", "", 0.0);
+    // }
+
+    public String getSize() {
+        return size;
     }
-    
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 }

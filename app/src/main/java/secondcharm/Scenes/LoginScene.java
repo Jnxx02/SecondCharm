@@ -67,7 +67,7 @@ public class LoginScene {
             // Periksa kecocokan username dan password dari database
             if (UserConfig.validasiLogin(username, password)) {
                 // Jika login berhasil, arahkan ke scene selanjutnya
-                Scene2 scene2 = new Scene2(stage);
+                Scene2 scene2 = new Scene2(stage) ;
                 scene2.show();
             } else {
                 // Jika login gagal, tampilkan pesan kesalahan

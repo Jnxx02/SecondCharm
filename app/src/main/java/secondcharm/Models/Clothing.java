@@ -1,14 +1,22 @@
 package secondcharm.Models;
 
-public abstract class Clothing {
+public class Clothing {
+    private byte[] image;
     private String name;
     private double price;
-    private int stock;
     
-    public Clothing(String name, double price, int stock) {
+    public Clothing(byte[] image, String name, double price) {
+        this.image = image;
         this.name = name;
         this.price = price;
-        this.stock = stock;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
     
     public String getName() {
@@ -27,13 +35,4 @@ public abstract class Clothing {
         this.price = price;
     }
 
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    abstract void displayInfo();
 }

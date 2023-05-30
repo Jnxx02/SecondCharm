@@ -2,14 +2,12 @@ package secondcharm.Scenes;
 
 import java.sql.SQLException;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -18,30 +16,26 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import secondcharm.Models.Bottom;
 import secondcharm.Models.Top;
-import secondcharm.dao.BottomDao;
+import secondcharm.dao.TopCell;
 import secondcharm.dao.TopDao;
 
 public class Scene2 {
     private Stage stage;
     private VBox rightSide;
-    private ObservableList<Top> listAtasan;
-    private ObservableList<Bottom> listBawahan;
-    private TopDao topDao;
-    private BottomDao bottomDao;
-
+    private ListView<Top> topListView;
+    
     public Scene2(Stage stage) {
         this.stage = stage;
+        
 
-        // Observable List atasan
-        listAtasan = FXCollections.observableArrayList();
-        topDao = new TopDao();
-        try {
-            listAtasan.addAll(topDao.getAll());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        // // Observable List atasan
+        // listAtasan = FXCollections.observableArrayList();
+        // try {
+        //     listAtasan.addAll(TopDao.getAll());
+        // } catch (SQLException e) {
+        //     e.printStackTrace();
+        // }
 
         // // Observable List bawahan
         // listBawahan = FXCollections.observableArrayList();
@@ -70,32 +64,22 @@ public class Scene2 {
     private void showAtasan() {
         rightSide.getChildren().clear();
     
-        // Menampilkan daftar atasan
-        // for (Top top : listAtasan) {
-            Top top = new Top("Kemeja", 70000, 1, "XXL");
-            ImageView imageView = new ImageView("/images/top1.jpg");
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(100);
-            Label nameLabel = new Label(top.getName());
-            Label priceLabel = new Label("Price: " + top.getPrice());
+        // Mengambil data atasan dari database
+        TopDao topDao = new TopDao();
+        ObservableList<Top> tops = topDao.getDaftarAtasan();
     
-            VBox productBox = new VBox(imageView, nameLabel, priceLabel);
-            // productBox.setAlignment(Pos.TOP_RIGHT);
-            productBox.getStyleClass().add("product-box");
+        // Menampilkan daftar atasan menggunakan ListView
+        topListView = new ListView<>(tops);
+        topListView.setCellFactory(param -> new TopCell());
     
-            productBox.setOnMouseClicked(event -> {
-                MainScene mainScene = new MainScene(stage);
-                mainScene.show();
-            });
+        rightSide.getChildren().add(topListView);
+    }
     
-            rightSide.getChildren().add(productBox);
-        }
-    // }
     
-
+    
+    
     private void showBawahan() {
         rightSide.getChildren().clear();
-
         // TODO
         /*
          * Menampilkan daftar atasan yang isinya berupa gambar, nama, dan harga yang
@@ -122,6 +106,7 @@ public class Scene2 {
          * menampilkan barang serta fitur pembelian barang" lalu "git push origin main".
          * Sekian.
          */
+
     }
 
     private void changeMenu(int indexMenu) {
