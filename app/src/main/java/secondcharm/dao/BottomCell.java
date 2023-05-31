@@ -5,28 +5,28 @@ import java.io.ByteArrayInputStream;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import secondcharm.Models.Top;
-import javafx.scene.image.Image;
+import secondcharm.Models.Bottom;
 
-public class TopCell extends ListCell<Top> {
+public class BottomCell extends ListCell<Bottom> {
     @Override
-    protected void updateItem(Top top, boolean empty) {
-        super.updateItem(top, empty);
+    protected void updateItem(Bottom bottom, boolean empty) {
+        super.updateItem(bottom, empty);
 
-        if (empty || top == null) {
+        if (empty || bottom == null) {
             setText(null);
             setGraphic(null);
         } else {
             // Tampilkan informasi atasan sesuai kebutuhan, misalnya gambar, nama, dan harga
-            ImageView imageView = new ImageView(new Image(new ByteArrayInputStream(top.getImage())));
+            ImageView imageView = new ImageView(new Image(new ByteArrayInputStream(bottom.getImage())));
             imageView.setFitWidth(100);
             imageView.setFitHeight(100);
 
-            Label nameLabel = new Label(top.getName());
-            Label priceLabel = new Label(Double.toString(top.getPrice()));
+            Label nameLabel = new Label(bottom.getName());
+            Label priceLabel = new Label(Double.toString(bottom.getPrice()));
 
             VBox vbox = new VBox(nameLabel, priceLabel);
             vbox.setSpacing(5);

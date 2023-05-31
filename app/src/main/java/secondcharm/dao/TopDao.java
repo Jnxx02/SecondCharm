@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import secondcharm.Models.Top;
-
 
 public class TopDao {
     private static final String DB_URL = "jdbc:sqlite:db/tops.db";

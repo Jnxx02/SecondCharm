@@ -1,11 +1,8 @@
 package secondcharm.Scenes;
 
-import java.sql.SQLException;
-
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -16,35 +13,21 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import secondcharm.Models.Bottom;
 import secondcharm.Models.Top;
+import secondcharm.dao.BottomCell;
+import secondcharm.dao.BottomDao;
 import secondcharm.dao.TopCell;
 import secondcharm.dao.TopDao;
 
-public class Scene2 {
-    private Stage stage;
+public class Scene2 extends MyScene{
     private VBox rightSide;
     private ListView<Top> topListView;
+    private ListView<Bottom> bottomListView;
     
     public Scene2(Stage stage) {
-        this.stage = stage;
-        
-
-        // // Observable List atasan
-        // listAtasan = FXCollections.observableArrayList();
-        // try {
-        //     listAtasan.addAll(TopDao.getAll());
-        // } catch (SQLException e) {
-        //     e.printStackTrace();
-        // }
-
-        // // Observable List bawahan
-        // listBawahan = FXCollections.observableArrayList();
-        // bottomDao = new BottomDao();
-        // try {
-        // listBawahan.addAll(bottomDao.getAll());
-        // } catch (SQLException e) {
-        // e.printStackTrace();
-        // }
+        super(stage);
+    
     }
 
     public void show() {
@@ -75,38 +58,18 @@ public class Scene2 {
         rightSide.getChildren().add(topListView);
     }
     
-    
-    
-    
     private void showBawahan() {
         rightSide.getChildren().clear();
-        // TODO
-        /*
-         * Menampilkan daftar atasan yang isinya berupa gambar, nama, dan harga yang
-         * bila di klik
-         * akan menunjukkan deskripsi produknya seperti nama barang, harga, stock, dan
-         * size kemudian
-         * akan ada opsi untuk membeli yang mengarah ke MainScene untuk transaksi dengan
-         * mengisi alamat
-         * dan melakukan pembayaran.
-         * 
-         * Bila dibeli maka stock produk tersebut akan berkurang di database dan bila
-         * stock habis maka
-         * produk akan terhapus dari list barang (sekalian sinkronkan dengan database).
-         * 
-         * Untuk databasenya itu buat bisa perbaiki di folder dao yang ada TopDao sama
-         * BottomDao. Sudah
-         * ada mi templatenya yang dari modul tinggal disesuaikan dengan program.
-         * 
-         * Note:
-         * Klu ada baris program yang perlu dihapus atau tidak diperlukan ji bisa
-         * dihapus saja dan jika
-         * sudah ada perubahan silahkan di "git add ." kemudian git commit -m "feat:
-         * menambahkan fitur
-         * menampilkan barang serta fitur pembelian barang" lalu "git push origin main".
-         * Sekian.
-         */
-
+    
+        // Mengambil data atasan dari database
+        BottomDao bottomDao = new BottomDao();
+        ObservableList<Bottom> bots = bottomDao.getDaftarBawahan();
+    
+        // Menampilkan daftar atasan menggunakan ListView
+        bottomListView = new ListView<>(bots);
+        bottomListView.setCellFactory(param -> new BottomCell());
+    
+        rightSide.getChildren().add(bottomListView);
     }
 
     private void changeMenu(int indexMenu) {

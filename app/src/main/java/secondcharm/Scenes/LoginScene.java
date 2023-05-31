@@ -15,11 +15,9 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import secondcharm.Utils.UserConfig;
 
-public class LoginScene {
-    private Stage stage;
-
+public class LoginScene extends MyScene{
     public LoginScene(Stage stage) {
-        this.stage = stage;
+        super(stage);
     }
 
     public void show() {

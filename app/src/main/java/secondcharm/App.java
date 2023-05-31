@@ -6,6 +6,7 @@ import secondcharm.Scenes.Scene1;
 
 
 public class App extends Application {
+    protected Stage stage;
 
     @Override
     public void start(Stage stage) {

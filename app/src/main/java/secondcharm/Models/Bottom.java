@@ -2,18 +2,18 @@ package secondcharm.Models;
 
 public class Bottom extends Clothing {
     
-    private String size;
+    private int size;
     
-    public Bottom(byte[] image, String name, double price, String size) {
+    public Bottom(byte[] image, String name, double price, int size) {
         super(image, name, price);
         this.size = size;
     }
 
-    public String getSize() {
+    public int getSize() {
         return size;
     }
     
-    public void setSize(String size) {
+    public void setSize(int size) {
         this.size = size;
     }
     
