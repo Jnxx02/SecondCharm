@@ -13,7 +13,7 @@ import secondcharm.Models.Top;
 public class TopDao {
     private static final String DB_URL = "jdbc:sqlite:db/tops.db";
 
-    public ObservableList<Top> getDaftarAtasan() {
+    public ObservableList<Top> getToplList() {
         ObservableList<Top> tops = FXCollections.observableArrayList();
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
@@ -25,8 +25,9 @@ public class TopDao {
                 String name = resultSet.getString("name");
                 double price = resultSet.getDouble("price");
                 String size = resultSet.getString("size");
+                String describe = resultSet.getString("description");
 
-                Top top = new Top(image, name, price, size);
+                Top top = new Top(image, name, price, size, describe);
                 tops.add(top);
             }
         } catch (SQLException e) {

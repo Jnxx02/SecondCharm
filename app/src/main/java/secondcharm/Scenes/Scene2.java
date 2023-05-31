@@ -30,6 +30,7 @@ public class Scene2 extends MyScene{
     
     }
 
+    // Menampilkan scene
     public void show() {
         HBox root = new HBox();
         Scene scene = new Scene(root, 640, 480);
@@ -44,31 +45,33 @@ public class Scene2 extends MyScene{
         stage.setScene(scene);
     }
 
-    private void showAtasan() {
+    // Menampilkan list produk atasan
+    private void showTop() {
         rightSide.getChildren().clear();
     
         // Mengambil data atasan dari database
         TopDao topDao = new TopDao();
-        ObservableList<Top> tops = topDao.getDaftarAtasan();
+        ObservableList<Top> tops = topDao.getToplList();
     
         // Menampilkan daftar atasan menggunakan ListView
         topListView = new ListView<>(tops);
         topListView.setCellFactory(param -> new TopCell());
 
         topListView.setOnMouseClicked(v -> {
-            MainScene mainScene = new MainScene(stage);
-            mainScene.show();
+            BuySceneTop buySceneTop = new BuySceneTop(stage);
+            buySceneTop.show();
         });
     
         rightSide.getChildren().add(topListView);
     }
     
-    private void showBawahan() {
+    // Menampilkan list produk bawahan
+    private void showBottom() {
         rightSide.getChildren().clear();
     
         // Mengambil data atasan dari database
         BottomDao bottomDao = new BottomDao();
-        ObservableList<Bottom> bots = bottomDao.getDaftarBawahan();
+        ObservableList<Bottom> bots = bottomDao.getBottomList();
     
         // Menampilkan daftar atasan menggunakan ListView
         bottomListView = new ListView<>(bots);
@@ -77,18 +80,20 @@ public class Scene2 extends MyScene{
         rightSide.getChildren().add(bottomListView);
     }
 
+    //Pergantian menu
     private void changeMenu(int indexMenu) {
         switch (indexMenu) {
             case 1:
-                showAtasan();
+                showTop();
                 break;
             case 2:
-                showBawahan();
+                showBottom();
             default:
                 break;
         }
     }
 
+    // Sisi kanan scene
     private VBox generateRightSide(double width, double height) {
         VBox vBoxLayout = new VBox();
         vBoxLayout.setPrefSize(width, height);
@@ -98,6 +103,7 @@ public class Scene2 extends MyScene{
         return vBoxLayout;
     }
 
+    // Sisi kiri scene
     private VBox generateLeftSide(double width, double height) {
         // Left Side (MENU)
         VBox vboxMenu = new VBox();
@@ -140,6 +146,7 @@ public class Scene2 extends MyScene{
         return vboxMenu;
     }
 
+    // Menu Item
     private HBox[] generateMenuItem() {
         String[] listTitle = {"Atasan", "Bawahan"};
         HBox[] listHboxMenu = new HBox[2];
@@ -170,6 +177,7 @@ public class Scene2 extends MyScene{
         return listHboxMenu;
     }
 
+    // Status menu aktif
     private void changeMenuStatus(HBox menu, boolean isActive) {
         if (isActive) {
             menu.getStyleClass().add("menu-active");

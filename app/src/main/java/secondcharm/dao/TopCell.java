@@ -26,7 +26,7 @@ public class TopCell extends ListCell<Top> {
             imageView.setFitHeight(100);
 
             Label nameLabel = new Label(top.getName());
-            Label priceLabel = new Label(Double.toString(top.getPrice()));
+            Label priceLabel = new Label("Rp" + Double.toString(top.getPrice()));
 
             VBox vbox = new VBox(nameLabel, priceLabel);
             vbox.setSpacing(5);

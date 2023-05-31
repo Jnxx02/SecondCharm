@@ -1,17 +1,14 @@
 package secondcharm.Models;
 
 public class Top extends Clothing {
-
     private String size;
 
-    public Top(byte[] image, String name, double price, String size) {
-        super(image, name, price);
+    public Top(byte[] image, String name, double price, String size, String describe) {
+        super(image, name, price, describe);
         this.size = size;
     }
 
-    // public Top() {
-    //     super("", "", 0.0);
-    // }
+    public Top() {}
 
     public String getSize() {
         return size;

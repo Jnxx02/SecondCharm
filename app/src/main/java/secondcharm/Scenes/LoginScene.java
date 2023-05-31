@@ -20,6 +20,7 @@ public class LoginScene extends MyScene{
         super(stage);
     }
 
+    // Menampilkan scene
     public void show() {
         StackPane spLayout = new StackPane();
         Scene scene = new Scene(spLayout, 600, 480);

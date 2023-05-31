@@ -13,7 +13,7 @@ import secondcharm.Models.Bottom;
 public class BottomDao {
     private static final String DB_URL = "jdbc:sqlite:db/bottoms.db";
 
-    public ObservableList<Bottom> getDaftarBawahan() {
+    public ObservableList<Bottom> getBottomList() {
         ObservableList< Bottom> bots = FXCollections.observableArrayList();
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
@@ -25,8 +25,9 @@ public class BottomDao {
                 String name = resultSet.getString("name");
                 double price = resultSet.getDouble("price");
                 int size = resultSet.getInt("size");
+                String describe = resultSet.getString("description");
 
-                Bottom bottom = new Bottom(image, name, price, size);
+                Bottom bottom = new Bottom(image, name, price, size, describe);
                 bots.add(bottom);
             }
         } catch (SQLException e) {

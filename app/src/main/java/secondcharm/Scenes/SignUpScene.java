@@ -20,6 +20,7 @@ public class SignUpScene extends MyScene{
         super(stage);
     }
 
+    // Menampilkan scene
     public void show() {
         StackPane spLayout = new StackPane();
         Scene scene = new Scene(spLayout, 600, 480);
@@ -75,7 +76,7 @@ public class SignUpScene extends MyScene{
         });
         
 
-         // Opsi Login
+        // Opsi Login
         Label labelLogin = new Label("Sudah punya akun? Login");
         labelLogin.setOnMouseClicked(v -> {
             LoginScene loginScene = new LoginScene(stage);

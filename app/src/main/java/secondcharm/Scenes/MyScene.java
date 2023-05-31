@@ -11,5 +11,4 @@ public abstract class MyScene {
 
     public abstract void show();
 
-
 }
