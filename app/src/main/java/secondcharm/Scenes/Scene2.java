@@ -54,6 +54,11 @@ public class Scene2 extends MyScene{
         // Menampilkan daftar atasan menggunakan ListView
         topListView = new ListView<>(tops);
         topListView.setCellFactory(param -> new TopCell());
+
+        topListView.setOnMouseClicked(v -> {
+            MainScene mainScene = new MainScene(stage);
+            mainScene.show();
+        });
     
         rightSide.getChildren().add(topListView);
     }
