@@ -1,7 +1,5 @@
-.title-text {
-    -fx-font-size: 33px;
-    -fx-font-weight: bold;
-    -fx-fill: #060606;
+.root {
+    -fx-background-color: #f0f0f0; /* Warna latar belakang root */
 }
 
 .label {
@@ -10,25 +8,19 @@
     -fx-font-weight: bold;
 }
 
-.text-field {
-    -fx-prompt-text-fill: #999999;
-    -fx-max-width: 200px;
-    -fx-min-width: 100px;
-}
-
-.password-field {
-    -fx-prompt-text-fill: #999999;
-    -fx-max-width: 200px;
-    -fx-min-width: 100px;
-}
-
 .error-text {
     -fx-font-size: 14px;
     -fx-fill: red;
     -fx-font-weight: bold;
 }
 
-.btn-login {
+.text-field {
+    -fx-prompt-text-fill: #999999;
+    -fx-max-width: 300px;
+    -fx-min-width: 100px;
+}
+
+.button {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: "#323232";
@@ -38,10 +30,10 @@
 	-fx-min-height: 38px;
 }
 
-.btn-login:hover {
-    -fx-background-color: #555555;
+.button:hover {
+    -fx-background-color: #555555;/* Warna latar belakang button saat dihover */
 }
 
-.btn-login:pressed {
+.button:pressed {
     -fx-background-color: #222222;
 }

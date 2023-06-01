@@ -11,9 +11,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import secondcharm.Models.Bottom;
 import secondcharm.dao.BottomDao;
@@ -26,21 +29,31 @@ public class BuySceneBottom extends MyScene {
     }
 
     public void show() {
+        StackPane spLayout = new StackPane();
+        Scene scene = new Scene(spLayout, 640, 480);
+        scene.getStylesheets().add(getClass().getResource("/styles/BuyScene-style.css").toExternalForm());
+        
         VBox root = new VBox();
-        Scene scene = new Scene(root, 640, 480);
+
+        // Setting background
+        ImageView ivBackground = new ImageView("/images/login-bg-2.png");
+        ivBackground.setFitWidth(scene.getWidth());
+        ivBackground.setFitHeight(scene.getHeight());
+        spLayout.getChildren().add(ivBackground);
 
         // Mengisi Alamat
         Label addressLabel = new Label("Enter Your Address");
         TextField addressTextField = new TextField();
-        Label errorLabel = new Label();
-        errorLabel.setTextFill(Color.RED);
+        Text errorMessage = new Text();
+        errorMessage.getStyleClass().add("error-text");
+        errorMessage.setTextAlignment(TextAlignment.CENTER);
 
         // Tombol untuk melakukan pembayaran
         Button payButton = new Button("Buy");
         payButton.setOnAction(e -> {
             String address = addressTextField.getText();
             if (address.isEmpty()) {
-                errorLabel.setText("Please enter your address.");
+                errorMessage.setText("Please enter your address.");
             } else {
                 boolean confirmed = showConfirmationDialog("Confirmation", "Are you sure you want to buy this product?");
                 if (confirmed) {
@@ -66,11 +79,12 @@ public class BuySceneBottom extends MyScene {
         hButton.setSpacing(10);
         hButton.setAlignment(Pos.CENTER);
 
-        root.getChildren().addAll(addressLabel, addressTextField, errorLabel, hButton);
+        root.getChildren().addAll(addressLabel, addressTextField, errorMessage, hButton);
         root.setAlignment(Pos.CENTER);
         root.setSpacing(10);
         root.setPadding(new Insets(10));
 
+        spLayout.getChildren().add(root);
         stage.setScene(scene);
         stage.show();
     }
