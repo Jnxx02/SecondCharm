@@ -30,13 +30,13 @@ public class BuySceneBottom extends MyScene {
 
     public void show() {
         StackPane spLayout = new StackPane();
-        Scene scene = new Scene(spLayout, 640, 480);
+        Scene scene = new Scene(spLayout, 450, 600);
         scene.getStylesheets().add(getClass().getResource("/styles/BuyScene-style.css").toExternalForm());
         
         VBox root = new VBox();
 
         // Setting background
-        ImageView ivBackground = new ImageView("/images/login-bg-2.png");
+        ImageView ivBackground = new ImageView("/images/10.png");
         ivBackground.setFitWidth(scene.getWidth());
         ivBackground.setFitHeight(scene.getHeight());
         spLayout.getChildren().add(ivBackground);

@@ -32,7 +32,7 @@ public class SignUpScene extends MyScene{
         vLayout.setAlignment(Pos.CENTER);
 
         // Setting background
-        ImageView ivBackground = new ImageView("/images/login-bg-2.png");
+        ImageView ivBackground = new ImageView("/images/10.png");
         ivBackground.setFitWidth(scene.getWidth());
         ivBackground.setFitHeight(scene.getHeight());
         spLayout.getChildren().add(ivBackground);

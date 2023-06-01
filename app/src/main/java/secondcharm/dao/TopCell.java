@@ -42,13 +42,13 @@ public class TopCell extends ListCell<Top> {
         } else {
             // Tampilkan informasi singkat atasan
             ImageView imageView = new ImageView(new Image(new ByteArrayInputStream(top.getImage())));
-            imageView.setFitWidth(100);
-            imageView.setFitHeight(100);
+            imageView.setFitWidth(75);
+            imageView.setFitHeight(75);
 
             Label nameLabel = new Label(top.getName() + " - " + top.getSize());
             nameLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: white;");
             Label priceLabel = new Label("Rp" + Double.toString(top.getPrice()));
-            priceLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 24px; -fx-text-fill: white;");
+            priceLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: white;");
 
             VBox vbox = new VBox(priceLabel, nameLabel);
             vbox.setSpacing(5);

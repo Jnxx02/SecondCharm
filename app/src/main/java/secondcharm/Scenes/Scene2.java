@@ -148,7 +148,7 @@ public class Scene2 extends MyScene{
 
     // Menu Item
     private HBox[] generateMenuItem() {
-        String[] listTitle = {"Atasan", "Bawahan"};
+        String[] listTitle = {"Top", "Bottom"};
         HBox[] listHboxMenu = new HBox[2];
 
         for (int i = 0; i < listHboxMenu.length; i++) {
