@@ -19,6 +19,18 @@ import javafx.scene.image.Image;
 public class TopCell extends ListCell<Top> {
     private Stage stage;
 
+    {
+        // CSS styling
+        setStyle("-fx-background-color: #cea267;"); /* Warna latar belakang sel */
+
+        setOnMouseEntered(e -> {
+            setStyle("-fx-background-color: #555555;"); /* Warna latar belakang saat dihover */
+        });
+
+        setOnMouseExited(e -> {
+            setStyle("-fx-background-color: #cea267;"); /* Kembalikan warna latar belakang awal */
+        });
+    }
 
     @Override
     protected void updateItem(Top top, boolean empty) {
@@ -33,12 +45,14 @@ public class TopCell extends ListCell<Top> {
             imageView.setFitWidth(100);
             imageView.setFitHeight(100);
 
-            Label nameLabel = new Label(top.getName());
+            Label nameLabel = new Label(top.getName() + " - " + top.getSize());
+            nameLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: white;");
             Label priceLabel = new Label("Rp" + Double.toString(top.getPrice()));
+            priceLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 24px; -fx-text-fill: white;");
 
             VBox vbox = new VBox(priceLabel, nameLabel);
             vbox.setSpacing(5);
-            vbox.setAlignment(Pos.CENTER);
+            vbox.setAlignment(Pos.CENTER_LEFT);
 
             HBox hBox = new HBox(imageView, vbox);
             hBox.setSpacing(8);
@@ -65,6 +79,24 @@ public class TopCell extends ListCell<Top> {
         Button buyButton = (Button) alert.getDialogPane().lookupButton(cancelButtonType);
         buyButton.setDefaultButton(false);
         buyButton.setText("Buy");
+        buyButton.setStyle("-fx-background-color: #white; -fx-text-fill: #cea627; -fx-font-weight: bold;");
+
+        buyButton.setOnMouseEntered(e -> {
+            buyButton.setStyle("-fx-background-color: #555555;");
+        });
+        
+        buyButton.setOnMouseExited(e -> {
+            buyButton.setStyle("-fx-background-color: #00bfff;");
+        });
+        
+        buyButton.setOnMousePressed(e -> {
+            buyButton.setStyle("-fx-background-color: #222222");
+        });
+        
+        buyButton.setOnMouseReleased(e -> {
+            buyButton.setStyle("-fx-background-color: #555555;");
+        });
+
     
         alert.showAndWait().ifPresent(buttonType -> {
             if (buttonType == buyButtonType) {
