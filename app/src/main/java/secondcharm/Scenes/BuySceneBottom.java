@@ -11,9 +11,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import secondcharm.Models.Bottom;
+import secondcharm.dao.BottomDao;
 
 public class BuySceneBottom extends MyScene {
     private Bottom selectedBottom;
@@ -22,37 +25,48 @@ public class BuySceneBottom extends MyScene {
         super(stage);
     }
 
-    public void show()  {
+    public void show() {
         VBox root = new VBox();
         Scene scene = new Scene(root, 640, 480);
 
-        // Informasi Produk
-        Label nameLabel = new Label(selectedBottom.getName());
-        Label priceLabel = new Label("Rp" + selectedBottom.getPrice());
-        Label sizeLabel = new Label("Size: " + selectedBottom.getSize());
-        Label descriptionLabel = new Label("Description: " + selectedBottom.getDescribe());
-
-        // Membuat tampilan untuk memasukkan alamat pengiriman
-        Label addressLabel = new Label("Alamat Pengiriman:");
+        // Mengisi Alamat
+        Label addressLabel = new Label("Enter Your Address");
         TextField addressTextField = new TextField();
+        Label errorLabel = new Label();
+        errorLabel.setTextFill(Color.RED);
 
         // Tombol untuk melakukan pembayaran
         Button payButton = new Button("Buy");
         payButton.setOnAction(e -> {
-            boolean confirmed = showConfirmationDialog("Confirmation", "Are you sure you want to buy this product?");
-            if (confirmed) {
-                showInformationDialog("Success", "Product purchased successfully!");
-
-                // Setelah pembayaran selesai, hapus produk dari database
-                deleteBottomFromDatabase(selectedBottom);
-                
-                // Kembali ke tampilan sebelumnya (Scene2)
-                Scene2 scene2 = new Scene2(stage);
-                scene2.show();
+            String address = addressTextField.getText();
+            if (address.isEmpty()) {
+                errorLabel.setText("Please enter your address.");
+            } else {
+                boolean confirmed = showConfirmationDialog("Confirmation", "Are you sure you want to buy this product?");
+                if (confirmed) {
+                    showInformationDialog("Success", "Product purchased successfully!");
+    
+                    // Menghapus produk dari database setelah pembelian berhasil
+                    BottomDao bottomDao = new BottomDao();
+                    bottomDao.deleteFromDatabase(selectedBottom);
+                    // Kembali ke tampilan sebelumnya (Scene2)
+                    Scene2 scene2 = new Scene2(stage);
+                    scene2.show();
+                }
             }
         });
 
-        root.getChildren().addAll(priceLabel, nameLabel, sizeLabel, descriptionLabel, addressLabel, addressTextField, payButton);
+        Button cancelButton = new Button("Cancel");
+        cancelButton.setOnAction(e -> {
+            Scene2 scene2 = new Scene2(stage);
+            scene2.show();
+        });
+
+        HBox hButton = new HBox(cancelButton, payButton);
+        hButton.setSpacing(10);
+        hButton.setAlignment(Pos.CENTER);
+
+        root.getChildren().addAll(addressLabel, addressTextField, errorLabel, hButton);
         root.setAlignment(Pos.CENTER);
         root.setSpacing(10);
         root.setPadding(new Insets(10));
@@ -60,6 +74,7 @@ public class BuySceneBottom extends MyScene {
         stage.setScene(scene);
         stage.show();
     }
+    
 
     private boolean showConfirmationDialog(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -78,9 +93,4 @@ public class BuySceneBottom extends MyScene {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-    private void deleteBottomFromDatabase(Bottom selectedBottom2) {
-        
-    }
-
 }

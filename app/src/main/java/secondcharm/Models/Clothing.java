@@ -5,14 +5,24 @@ public class Clothing {
     private String name;
     private double price;
     private String describe;
+    private int id;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public Clothing() {}
 
-    public Clothing(byte[] image, String name, double price, String describe) {
+    public Clothing(byte[] image, String name, double price, String describe, int id) {
         this.image = image;
         this.name = name;
         this.price = price;
         this.describe = describe;
+        this.id = id;
     }
     
     public byte[] getImage() {

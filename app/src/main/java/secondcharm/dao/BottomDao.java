@@ -21,13 +21,14 @@ public class BottomDao {
              ResultSet resultSet = prepStmt.executeQuery()) {
 
             while (resultSet.next()) {
+                int id = resultSet.getInt("id");
                 byte[] image = resultSet.getBytes("image");
                 String name = resultSet.getString("name");
                 double price = resultSet.getDouble("price");
                 int size = resultSet.getInt("size");
                 String describe = resultSet.getString("description");
 
-                Bottom bottom = new Bottom(image, name, price, size, describe);
+                Bottom bottom = new Bottom(image, name, price, size, describe, id);
                 bots.add(bottom);
             }
         } catch (SQLException e) {
@@ -35,5 +36,15 @@ public class BottomDao {
         }
 
         return bots;
+    }
+
+    public void deleteFromDatabase(Bottom bottom) {
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement prepStmt = conn.prepareStatement("DELETE * FROM bottom WHERE id = ?")) {
+            prepStmt.setInt(0, bottom.getId());
+            prepStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

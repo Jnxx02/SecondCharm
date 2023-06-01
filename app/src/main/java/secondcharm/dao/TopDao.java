@@ -21,13 +21,14 @@ public class TopDao {
              ResultSet resultSet = prepStmt.executeQuery()) {
 
             while (resultSet.next()) {
+                int id = resultSet.getInt("id");
                 byte[] image = resultSet.getBytes("image");
                 String name = resultSet.getString("name");
                 double price = resultSet.getDouble("price");
                 String size = resultSet.getString("size");
                 String describe = resultSet.getString("description");
 
-                Top top = new Top(image, name, price, size, describe);
+                Top top = new Top(image, name, price, size, describe, id);
                 tops.add(top);
             }
         } catch (SQLException e) {
@@ -35,5 +36,15 @@ public class TopDao {
         }
 
         return tops;
+    }
+
+    public void deleteFromDatabase(Top top) {
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement prepStmt = conn.prepareStatement("DELETE * FROM top WHERE id = ?")) {
+            prepStmt.setInt(1, top.getId());
+            prepStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

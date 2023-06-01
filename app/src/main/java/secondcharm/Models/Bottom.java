@@ -1,11 +1,10 @@
 package secondcharm.Models;
 
 public class Bottom extends Clothing {
-    
     private int size;
     
-    public Bottom(byte[] image, String name, double price, int size, String describe) {
-        super(image, name, price, describe);
+    public Bottom(byte[] image, String name, double price, int size, String describe, int id) {
+        super(image, name, price, describe, id);
         this.size = size;
     }
 
