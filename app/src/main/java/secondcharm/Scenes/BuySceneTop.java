@@ -33,6 +33,7 @@ public class BuySceneTop extends MyScene {
         scene.getStylesheets().add(getClass().getResource("/styles/BuyScene-style.css").toExternalForm());
         
         VBox root = new VBox();
+        Scene scene = new Scene(root, 450, 600);
 
         // Setting background
         ImageView ivBackground = new ImageView("/images/login-bg-2.png");
