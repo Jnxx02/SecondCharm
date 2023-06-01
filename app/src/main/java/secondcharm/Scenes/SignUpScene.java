@@ -21,6 +21,7 @@ public class SignUpScene extends MyScene{
     }
 
     // Menampilkan scene
+    @Override
     public void show() {
         StackPane spLayout = new StackPane();
         Scene scene = new Scene(spLayout, 450, 600);

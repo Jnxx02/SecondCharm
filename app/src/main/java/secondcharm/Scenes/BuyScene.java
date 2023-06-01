@@ -30,6 +30,7 @@ public class BuyScene extends MyScene {
         super(stage);
     }
 
+    @Override
     public void show() {
         StackPane spLayout = new StackPane();
         Scene scene = new Scene(spLayout, 450, 600);

@@ -31,6 +31,7 @@ public class Scene2 extends MyScene{
     }
 
     // Menampilkan scene
+    @Override
     public void show() {
         HBox root = new HBox();
         Scene scene = new Scene(root, 450, 600);

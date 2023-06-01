@@ -16,6 +16,7 @@ public class Scene1 extends MyScene {
         
     }
 
+    @Override
     public void show() {
         StackPane spLayout = new StackPane();
         Scene scene = new Scene(spLayout, 450, 600);
