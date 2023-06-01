@@ -28,7 +28,7 @@ public class BuySceneTop extends MyScene {
 
     public void show() {
         VBox root = new VBox();
-        Scene scene = new Scene(root, 640, 480);
+        Scene scene = new Scene(root, 450, 600);
 
         // Informasi Produk
         Label nameLabel = new Label(selectedTop.getName());

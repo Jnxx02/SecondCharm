@@ -19,21 +19,21 @@ public class Scene1 extends MyScene {
 
     public void show() {
         StackPane spLayout = new StackPane();
-        Scene scene = new Scene(spLayout, 600, 480);
+        Scene scene = new Scene(spLayout, 450, 600);
         scene.getStylesheets().add(getClass().getResource("/styles/Scene1-style.css").toExternalForm());
 
         // Setting background
-        ImageView ivBackground = new ImageView("/images/bg5.png");
+        ImageView ivBackground = new ImageView("/images/4.png");
         ivBackground.setFitWidth(scene.getWidth());
         ivBackground.setFitHeight(scene.getHeight());
         spLayout.getChildren().add(ivBackground);
 
         // Text Desc
-        Label lblDesc = new Label(
-                "Level Up Your Style Game with SecondCharm.");
-        lblDesc.getStyleClass().add("desc-text");
-        lblDesc.setWrapText(true);
-        lblDesc.setMaxWidth(250);
+        // Label lblDesc = new Label(
+        //         "Level Up Your Style Game with SecondCharm.");
+        // lblDesc.getStyleClass().add("desc-text");
+        // lblDesc.setWrapText(true);
+        // lblDesc.setMaxWidth(250);
 
         // Button Start
         Region space = new Region();
@@ -42,11 +42,11 @@ public class Scene1 extends MyScene {
         btnStart.getStyleClass().add("btn-start");
 
         // Vbox Layout
-        VBox vLayout = new VBox(lblDesc, btnStart);
+        VBox vLayout = new VBox( btnStart);
         vLayout.setSpacing(8);
         spLayout.getChildren().add(vLayout);
-        vLayout.setPadding(new Insets(20));
-        vLayout.setAlignment(Pos.BOTTOM_LEFT);
+        vLayout.setPadding(new Insets(20,20,100,20));
+        vLayout.setAlignment(Pos.BOTTOM_RIGHT);
 
         // Actions
         btnStart.setOnAction(v -> {

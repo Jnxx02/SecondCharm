@@ -23,7 +23,7 @@ public class LoginScene extends MyScene{
     // Menampilkan scene
     public void show() {
         StackPane spLayout = new StackPane();
-        Scene scene = new Scene(spLayout, 600, 480);
+        Scene scene = new Scene(spLayout, 450, 600);
         scene.getStylesheets().add(getClass().getResource("/styles/LoginScene-style.css").toExternalForm());
 
         VBox vLayout = new VBox();
@@ -32,7 +32,7 @@ public class LoginScene extends MyScene{
         vLayout.setAlignment(Pos.CENTER);
 
         // Setting background
-        ImageView ivBackground = new ImageView("/images/login-bg-2.png");
+        ImageView ivBackground = new ImageView("/images/10.png");
         ivBackground.setFitWidth(scene.getWidth());
         ivBackground.setFitHeight(scene.getHeight());
         spLayout.getChildren().add(ivBackground);

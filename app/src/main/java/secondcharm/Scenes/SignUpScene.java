@@ -23,7 +23,7 @@ public class SignUpScene extends MyScene{
     // Menampilkan scene
     public void show() {
         StackPane spLayout = new StackPane();
-        Scene scene = new Scene(spLayout, 600, 480);
+        Scene scene = new Scene(spLayout, 450, 600);
         scene.getStylesheets().add(getClass().getResource("/styles/LoginScene-style.css").toExternalForm());
 
         VBox vLayout = new VBox();

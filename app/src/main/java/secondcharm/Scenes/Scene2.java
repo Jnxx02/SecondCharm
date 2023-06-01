@@ -33,7 +33,7 @@ public class Scene2 extends MyScene{
     // Menampilkan scene
     public void show() {
         HBox root = new HBox();
-        Scene scene = new Scene(root, 640, 480);
+        Scene scene = new Scene(root, 450, 600);
 
         VBox leftSide = generateLeftSide(scene.getWidth() * .36, scene.getHeight());
         rightSide = generateRightSide(scene.getWidth() * .64, scene.getHeight());
