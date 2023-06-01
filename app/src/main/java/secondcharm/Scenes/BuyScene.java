@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -48,8 +49,16 @@ public class BuyScene extends MyScene {
         Label addressLabel = new Label("Enter Your Address");
         TextField addressTextField = new TextField();
         Text errorMessage = new Text();
+
+        // Error Message
         errorMessage.getStyleClass().add("error-text");
         errorMessage.setTextAlignment(TextAlignment.CENTER);
+
+        // Payment Method
+        Label paymentLabel = new Label("Select Payment Method:");
+        ChoiceBox<String> paymentChoiceBox = new ChoiceBox<>();
+        paymentChoiceBox.getItems().addAll("Bank Transfer", "Cash on Delivery", "Credit Card");
+        paymentChoiceBox.setValue("Bank Transfer");
 
         // Tombol untuk melakukan pembayaran
         Button payButton = new Button("Buy");
@@ -86,7 +95,7 @@ public class BuyScene extends MyScene {
         hButton.setSpacing(10);
         hButton.setAlignment(Pos.CENTER);
 
-        root.getChildren().addAll(addressLabel, addressTextField, errorMessage, hButton);
+        root.getChildren().addAll(addressLabel, addressTextField, errorMessage, paymentLabel, paymentChoiceBox, hButton);
         root.setAlignment(Pos.CENTER);
         root.setSpacing(10);
         root.setPadding(new Insets(10));

@@ -65,6 +65,7 @@ public class TopCell extends ListCell<Top> {
             });
         }
     }
+    
 
     private void showProductDescription(Top top) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

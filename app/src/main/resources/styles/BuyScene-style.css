@@ -37,3 +37,9 @@
 .button:pressed {
     -fx-background-color: #222222;
 }
+
+.choice-box {
+    -fx-background-color: #cea267;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}

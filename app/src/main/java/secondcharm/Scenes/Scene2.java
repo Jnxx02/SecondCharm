@@ -78,7 +78,7 @@ public class Scene2 extends MyScene{
         bottomListView = new ListView<>(bots);
         bottomListView.setCellFactory(param -> new BottomCell());
 
-        bottomListView.setOnMouseClicked(v -> {
+        topListView.setOnMouseClicked(v -> {
             BuyScene buySceneTop = new BuyScene(stage);
             buySceneTop.show();
         });
