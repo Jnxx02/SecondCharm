@@ -1,6 +1,5 @@
 package secondcharm.Scenes;
 
-
 import java.util.Optional;
 
 import javafx.geometry.Insets;
@@ -19,12 +18,15 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import secondcharm.Models.Bottom;
+import secondcharm.Models.Top;
 import secondcharm.dao.BottomDao;
+import secondcharm.dao.TopDao;
 
-public class BuySceneBottom extends MyScene {
+public class BuyScene extends MyScene {
+    private Top selectedTop;
     private Bottom selectedBottom;
 
-    public BuySceneBottom(Stage stage) {
+    public BuyScene(Stage stage) {
         super(stage);
     }
 
@@ -60,8 +62,12 @@ public class BuySceneBottom extends MyScene {
                     showInformationDialog("Success", "Product purchased successfully!");
     
                     // Menghapus produk dari database setelah pembelian berhasil
+                    TopDao topDao = new TopDao();
+                    topDao.deleteFromDatabase(selectedTop);
+
                     BottomDao bottomDao = new BottomDao();
                     bottomDao.deleteFromDatabase(selectedBottom);
+    
                     // Kembali ke tampilan sebelumnya (Scene2)
                     Scene2 scene2 = new Scene2(stage);
                     scene2.show();
@@ -107,4 +113,5 @@ public class BuySceneBottom extends MyScene {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 }

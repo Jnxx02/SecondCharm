@@ -58,7 +58,7 @@ public class Scene2 extends MyScene{
         topListView.setCellFactory(param -> new TopCell());
 
         topListView.setOnMouseClicked(v -> {
-            BuySceneTop buySceneTop = new BuySceneTop(stage);
+            BuyScene buySceneTop = new BuyScene(stage);
             buySceneTop.show();
         });
     
@@ -76,6 +76,11 @@ public class Scene2 extends MyScene{
         // Menampilkan daftar atasan menggunakan ListView
         bottomListView = new ListView<>(bots);
         bottomListView.setCellFactory(param -> new BottomCell());
+
+        topListView.setOnMouseClicked(v -> {
+            BuyScene buySceneTop = new BuyScene(stage);
+            buySceneTop.show();
+        });
     
         rightSide.getChildren().add(bottomListView);
     }

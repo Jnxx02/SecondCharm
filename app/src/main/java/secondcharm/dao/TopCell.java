@@ -13,7 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import secondcharm.Models.Top;
-import secondcharm.Scenes.BuySceneTop;
+import secondcharm.Scenes.BuyScene;
 import javafx.scene.image.Image;
 
 public class TopCell extends ListCell<Top> {
@@ -71,15 +71,15 @@ public class TopCell extends ListCell<Top> {
         alert.setTitle("Product Description");
         alert.setHeaderText(top.getName() + " - " + top.getSize());
         alert.setContentText(top.getDescribe());
-        ButtonType buyButtonType = ButtonType.OK;
-        ButtonType cancelButtonType = ButtonType.CANCEL;
+        ButtonType buyButtonType = ButtonType.CANCEL;
+        ButtonType cancelButtonType = ButtonType.OK;
     
         alert.getDialogPane().getButtonTypes().setAll(buyButtonType, cancelButtonType);
     
         Button buyButton = (Button) alert.getDialogPane().lookupButton(cancelButtonType);
         buyButton.setDefaultButton(false);
         buyButton.setText("Buy");
-        buyButton.setStyle("-fx-background-color: #white; -fx-text-fill: #cea627; -fx-font-weight: bold;");
+        buyButton.setStyle("-fx-background-color: white; -fx-text-fill: #cea627; -fx-font-weight: bold;");
 
         buyButton.setOnMouseEntered(e -> {
             buyButton.setStyle("-fx-background-color: #555555;");
@@ -101,7 +101,7 @@ public class TopCell extends ListCell<Top> {
         alert.showAndWait().ifPresent(buttonType -> {
             if (buttonType == buyButtonType) {
                 // Logika pembelian produk
-                BuySceneTop buySceneTop = new BuySceneTop(stage);
+                BuyScene buySceneTop = new BuyScene(stage);
                 buySceneTop.show();
             }
         });
