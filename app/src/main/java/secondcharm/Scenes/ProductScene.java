@@ -20,12 +20,12 @@ import secondcharm.dao.BottomDao;
 import secondcharm.dao.TopCell;
 import secondcharm.dao.TopDao;
 
-public class Scene2 extends MyScene{
+public class ProductScene extends MyScene{
     private VBox rightSide;
     private ListView<Top> topListView = new ListView<>();
     private ListView<Bottom> bottomListView = new ListView<>();
     
-    public Scene2(Stage stage) {
+    public ProductScene(Stage stage) {
         super(stage);
     
     }
@@ -145,7 +145,7 @@ public class Scene2 extends MyScene{
         hboxHome.setSpacing(8);
         hboxHome.getStyleClass().add("hbox-home");
         hboxHome.setOnMouseClicked(v -> {
-            Scene1 Scene1 = new Scene1(stage);
+            HomeScene Scene1 = new HomeScene(stage);
             Scene1.show();
         });
 

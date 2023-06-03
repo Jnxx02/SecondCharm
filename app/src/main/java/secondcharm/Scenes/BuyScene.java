@@ -80,7 +80,7 @@ public class BuyScene extends MyScene {
                         
                         try {
                             Thread.sleep(300);
-                            Scene2 scene2 = new Scene2(super.stage);
+                            ProductScene scene2 = new ProductScene(super.stage);
                             scene2.show();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
@@ -93,7 +93,7 @@ public class BuyScene extends MyScene {
 
                         try {
                             Thread.sleep(300);
-                            Scene2 scene2 = new Scene2(super.stage);
+                            ProductScene scene2 = new ProductScene(super.stage);
                             scene2.show();
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
@@ -108,7 +108,7 @@ public class BuyScene extends MyScene {
 
         Button cancelButton = new Button("Cancel");
         cancelButton.setOnAction(e -> {
-            Scene2 scene2 = new Scene2(stage);
+            ProductScene scene2 = new ProductScene(stage);
             scene2.show();
         });
 

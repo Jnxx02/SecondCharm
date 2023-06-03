@@ -2,7 +2,7 @@ package secondcharm;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import secondcharm.Scenes.Scene1;
+import secondcharm.Scenes.HomeScene;
 
 
 public class App extends Application {
@@ -10,7 +10,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        Scene1 scene1 = new Scene1(stage);
+        HomeScene scene1 = new HomeScene(stage);
         scene1.show();
         stage.setTitle("SecondCharm");
         stage.setResizable(false);

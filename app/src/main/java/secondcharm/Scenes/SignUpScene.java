@@ -68,7 +68,7 @@ public class SignUpScene extends MyScene{
             if (UserConfig.isUsernameAvailable(username)) {
                 // Username tersedia, lanjutkan proses pendaftaran
                 UserConfig.registerUser(username, password);
-                Scene2 scene2 = new Scene2(stage);
+                ProductScene scene2 = new ProductScene(stage);
                 scene2.show();
             } else {
                 // Username sudah digunakan, tampilkan pesan kesalahan

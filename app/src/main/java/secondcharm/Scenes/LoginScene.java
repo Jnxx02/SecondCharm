@@ -67,7 +67,7 @@ public class LoginScene extends MyScene{
             // Periksa kecocokan username dan password dari database
             if (UserConfig.validasiLogin(username, password)) {
                 // Jika login berhasil, arahkan ke scene selanjutnya
-                Scene2 scene2 = new Scene2(stage) ;
+                ProductScene scene2 = new ProductScene(stage) ;
                 scene2.show();
             } else {
                 // Jika login gagal, tampilkan pesan kesalahan

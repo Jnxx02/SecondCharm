@@ -10,8 +10,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Scene1 extends MyScene {
-    public Scene1(Stage stage) {
+public class HomeScene extends MyScene {
+    public HomeScene(Stage stage) {
         super(stage);
         
     }
