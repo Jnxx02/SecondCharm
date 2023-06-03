@@ -40,7 +40,7 @@ public class TopDao {
 
     public void deleteFromDatabase(Top top) {
         try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement prepStmt = conn.prepareStatement("DELETE * FROM top WHERE id = ?")) {
+             PreparedStatement prepStmt = conn.prepareStatement("DELETE FROM Top WHERE id = ?")) {
             prepStmt.setInt(1, top.getId());
             prepStmt.executeUpdate();
         } catch (SQLException e) {

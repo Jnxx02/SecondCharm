@@ -40,8 +40,8 @@ public class BottomDao {
 
     public void deleteFromDatabase(Bottom bottom) {
         try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement prepStmt = conn.prepareStatement("DELETE * FROM bottom WHERE id = ?")) {
-            prepStmt.setInt(0, bottom.getId());
+             PreparedStatement prepStmt = conn.prepareStatement("DELETE FROM bottom WHERE id = ?")) {
+            prepStmt.setInt(1, bottom.getId());
             prepStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

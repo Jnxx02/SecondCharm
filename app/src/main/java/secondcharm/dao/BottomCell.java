@@ -100,7 +100,7 @@ public class BottomCell extends ListCell<Bottom> {
         alert.showAndWait().ifPresent(buttonType -> {
             if (buttonType == buyButtonType) {
                 // Logika pembelian produk
-                BuyScene buySceneTop = new BuyScene(stage);
+                BuyScene buySceneTop = new BuyScene(stage, null, null);
                 buySceneTop.show();
             }
         });

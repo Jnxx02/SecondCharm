@@ -22,8 +22,8 @@ import secondcharm.dao.TopDao;
 
 public class Scene2 extends MyScene{
     private VBox rightSide;
-    private ListView<Top> topListView;
-    private ListView<Bottom> bottomListView;
+    private ListView<Top> topListView = new ListView<>();
+    private ListView<Bottom> bottomListView = new ListView<>();
     
     public Scene2(Stage stage) {
         super(stage);
@@ -38,11 +38,14 @@ public class Scene2 extends MyScene{
 
         VBox leftSide = generateLeftSide(scene.getWidth() * .36, scene.getHeight());
         rightSide = generateRightSide(scene.getWidth() * .64, scene.getHeight());
-        changeMenu(1);
+        topListView.setMinHeight(600 - 24 *2);
+        bottomListView.setMinHeight(600 - 24 *2);
 
         root.getChildren().addAll(leftSide, rightSide);
 
         scene.getStylesheets().add(getClass().getResource("/styles/Scene2-style.css").toExternalForm());
+        changeMenu(1);
+
         stage.setScene(scene);
     }
 
@@ -55,11 +58,12 @@ public class Scene2 extends MyScene{
         ObservableList<Top> tops = topDao.getToplList();
     
         // Menampilkan daftar atasan menggunakan ListView
-        topListView = new ListView<>(tops);
+        topListView.setItems(tops);
+        // topListView.setPrefWidth(rightSide.getWidth());
         topListView.setCellFactory(param -> new TopCell());
 
         topListView.setOnMouseClicked(v -> {
-            BuyScene buySceneTop = new BuyScene(stage);
+            BuyScene buySceneTop = new BuyScene(stage, topListView.getSelectionModel().getSelectedItem(), null);
             buySceneTop.show();
         });
     
@@ -75,11 +79,11 @@ public class Scene2 extends MyScene{
         ObservableList<Bottom> bots = bottomDao.getBottomList();
     
         // Menampilkan daftar atasan menggunakan ListView
-        bottomListView = new ListView<>(bots);
+        bottomListView.setItems(bots);
         bottomListView.setCellFactory(param -> new BottomCell());
 
-        topListView.setOnMouseClicked(v -> {
-            BuyScene buySceneTop = new BuyScene(stage);
+        bottomListView.setOnMouseClicked(v -> {
+            BuyScene buySceneTop = new BuyScene(stage, null, bottomListView.getSelectionModel().getSelectedItem());
             buySceneTop.show();
         });
     

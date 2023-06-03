@@ -27,8 +27,10 @@ public class BuyScene extends MyScene {
     private Top selectedTop;
     private Bottom selectedBottom;
 
-    public BuyScene(Stage stage) {
+    public BuyScene(Stage stage, Top selectedTop, Bottom selectedBottom) {
         super(stage);
+        this.selectedTop = selectedTop;
+        this.selectedBottom = selectedBottom;
     }
 
     @Override
@@ -72,15 +74,34 @@ public class BuyScene extends MyScene {
                     showInformationDialog("Success", "Product purchased successfully!");
     
                     // Menghapus produk dari database setelah pembelian berhasil
-                    TopDao topDao = new TopDao();
-                    topDao.deleteFromDatabase(selectedTop);
+                    if(selectedTop!=null){
+                        TopDao topDao = new TopDao();
+                        topDao.deleteFromDatabase(selectedTop);
+                        
+                        try {
+                            Thread.sleep(300);
+                            Scene2 scene2 = new Scene2(super.stage);
+                            scene2.show();
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        
+                    }
+                    if(selectedBottom!=null){
+                        BottomDao bottomDao = new BottomDao();
+                        bottomDao.deleteFromDatabase(selectedBottom);
 
-                    BottomDao bottomDao = new BottomDao();
-                    bottomDao.deleteFromDatabase(selectedBottom);
+                        try {
+                            Thread.sleep(300);
+                            Scene2 scene2 = new Scene2(super.stage);
+                            scene2.show();
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                    
     
-                    // Kembali ke tampilan sebelumnya (Scene2)
-                    Scene2 scene2 = new Scene2(stage);
-                    scene2.show();
+                   
                 }
             }
         });
@@ -118,6 +139,12 @@ public class BuyScene extends MyScene {
 
     private void showInformationDialog(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        ButtonType cancelButtonType = ButtonType.OK;
+        alert.getDialogPane().getButtonTypes().setAll(cancelButtonType);
+
+        Button buyButton = (Button) alert.getDialogPane().lookupButton(cancelButtonType);
+        buyButton.setDefaultButton(false);
+        buyButton.setText("OK");
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
