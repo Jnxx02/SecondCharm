@@ -1,6 +1,7 @@
 package secondcharm;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import secondcharm.Scenes.HomeScene;
 
@@ -14,6 +15,7 @@ public class App extends Application {
         scene1.show();
         stage.setTitle("SecondCharm");
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/images/brand-logo.png"));
         stage.show();
     }
 
